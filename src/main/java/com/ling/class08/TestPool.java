@@ -1,14 +1,11 @@
 package com.ling.class08;
 
 
-import jdk.nashorn.internal.ir.Block;
-import jdk.nashorn.internal.ir.JoinPredecessor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashSet;
-import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -20,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class TestPool {
     public static void main(String[] args) {
         ThreadPool threadPool = new ThreadPool(1,
-                1000, TimeUnit.MILLISECONDS, 1,(queue,task)->{
+                1000, TimeUnit.MILLISECONDS, 1, (queue, task) -> {
             // 1) 死等
             // queue.put(task);
             // 2) 带超时等待
@@ -269,7 +266,7 @@ class BlockingQueue<T> {
     public void tryPut(RejectPolicy<T> rejectPolicy, T task) {
         lock.lock();
         try {
-            //判断队列是否已满
+            // 判断队列是否已满
             if (queue.size() == capacity) {
                 rejectPolicy.reject(this, task);
             } else {

@@ -1,9 +1,7 @@
 package com.ling.class08;
 
-import ch.qos.logback.classic.Logger;
 import lombok.extern.slf4j.Slf4j;
 
-import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Executors;
